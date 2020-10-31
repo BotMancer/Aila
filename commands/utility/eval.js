@@ -1,13 +1,13 @@
 const { ownerID } = require('../../config.json');
-const { permissions } = require('./status');
 module.exports = {
     commands: 'eval',
+    expectedArgs: '<comand>',
     minArgs: 1,
     maxArgs: 1,
-    callback: (message, arguments, text, client) => {
+    callback: async (message, arguments, text, client) => {
+        await message.react("🌸");
         if(message.member.id === ownerID){
-            let result = eval(arguments);
-            message.reply(result);
+            eval(arguments.toString());
         }
     },
     permissions: 'ADMINISTRATOR'
