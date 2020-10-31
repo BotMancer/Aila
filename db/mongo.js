@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 module.exports = async () => {
-    await mongoose.connect('mongodb+srv://Aila:MH05toia@discordbot.aaoij.mongodb.net/discordbot', {
+    await mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@discordbot.aaoij.mongodb.net/discordbot`, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });
