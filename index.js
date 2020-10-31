@@ -9,11 +9,21 @@ const { MessageEmbed } = require('discord.js');
 //Dotenv
 require('dotenv').config();
 
+const mongo = require('./db/mongo')
 const config = require('./config.json');
 const command = require('./command');
 
 client.on('ready', async () => {
     console.log('Il bot è pronto!');
+
+    await mongo().then(mongoose => {
+        try {
+            console.log('Connected!')
+        } finally {
+            mongoose.connection.close();
+        }
+    });
+
     const { prefix } = config;
     client.user.setPresence({
         activity: {
