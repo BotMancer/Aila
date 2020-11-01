@@ -100,7 +100,7 @@ module.exports = (client, commandOptions) => {
                 //Log dell'esecuzione del comando.
                 console.log(`Running the command: ${alias}`);
                 //Codice specifico del comando.
-                callback(message, arguments, arguments.join(' '), client);
+                callback(message, arguments, arguments.join(' '), client, prefix);
                 return
             }
         }

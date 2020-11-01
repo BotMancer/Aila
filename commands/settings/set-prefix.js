@@ -23,7 +23,7 @@ module.exports = {
                     upsert: true
                 });
 
-                message.reply(`Il prefisso per questo server è ora: ${prefix}`);
+                message.reply(`Il prefisso per questo server è ora: \`${prefix}\``);
 
                 //Update cache
                 commandBase.updateCache(guild, prefix);
