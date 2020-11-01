@@ -1,4 +1,7 @@
 {
     "prefix": "a!",
+    "features": {
+        "autoban": false
+    },
     "ownerID": "385895205406244865"
 }

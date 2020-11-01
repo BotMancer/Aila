@@ -10,6 +10,11 @@ const serverSettingsSchema = mongoose.Schema({
     prefix: {
         type: String,
         required: true
+    },
+
+    features: {
+        type: Object,
+        required: true
     }
 })
 

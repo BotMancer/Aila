@@ -1,5 +1,4 @@
 const { prefix: globalPrefix } = require('@root/config.json');
-const mongo = require('@db/mongo');
 const serverSettingsSchema = require('@schemas/server-settings-schema');
 const guildPrefixes = {};
 
@@ -98,7 +97,7 @@ module.exports = (client, commandOptions) => {
                     return
                 }
                 //Log dell'esecuzione del comando.
-                console.log(`Running the command: ${alias}`);
+                console.log(`Running the command: ${alias} on ${guild.name}`);
                 //Codice specifico del comando.
                 callback(message, arguments, arguments.join(' '), client, prefix);
                 return

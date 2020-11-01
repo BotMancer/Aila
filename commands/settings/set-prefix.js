@@ -1,4 +1,3 @@
-const mongo = require('@db/mongo');
 const serverSettingsSchema = require('@schemas/server-settings-schema');
 const commandBase = require('@commands/command-base');
 
@@ -14,7 +13,6 @@ module.exports = {
         await serverSettingsSchema.findByIdAndUpdate({
             _id: guild
         }, {
-            _id: guild,
             prefix
         }, {
             upsert: true
