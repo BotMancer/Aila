@@ -1,4 +1,4 @@
-const { ownerID } = require('../../config.json');
+const { ownerID } = require('@root/config.json');
 module.exports = {
     commands: 'eval',
     expectedArgs: '<comand>',

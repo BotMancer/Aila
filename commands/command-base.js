@@ -1,6 +1,5 @@
-const { prefix: globalPrefix } = require('../config.json');
-const mongo = require('../db/mongo');
-const serverSettingsSchema = require('../db/schemas/server-settings-schema');
+const { prefix: globalPrefix } = require('@root/config.json');
+const serverSettingsSchema = require('@schemas/server-settings-schema');
 const guildPrefixes = {};
 
 const validatePermissions = (permissions) => {
@@ -98,27 +97,23 @@ module.exports = (client, commandOptions) => {
                     return
                 }
                 //Log dell'esecuzione del comando.
-                console.log(`Running the command: ${alias}`);
+                console.log(`Running the command: ${alias} on ${guild.name}`);
                 //Codice specifico del comando.
-                callback(message, arguments, arguments.join(' '), client);
+                callback(message, arguments, arguments.join(' '), client, prefix);
                 return
             }
         }
     })
 }
 
-module.exports.loadPrefixes = async (client) => {
-    await mongo().then(async mongoose => {
-        try {
-            for (const guild of client.guilds.cache) {
-                const guildID = guild[1].id;
-                const result = await serverSettingsSchema.findOne({ _id: guildID })
-                guildPrefixes[guildID] = result.prefix;
-            }
+module.exports.updateCache = (guildId, newPrefix) => {
+    guildPrefixes[guildId] = newPrefix
+}
 
-            console.log(guildPrefixes);
-        } finally {
-            mongoose.connection.close();
-        }
-    });
+module.exports.loadPrefixes = async (client) => {
+    for (const guild of client.guilds.cache) {
+        const guildID = guild[1].id;
+        const result = await serverSettingsSchema.findOne({ _id: guildID })
+        guildPrefixes[guildID] = result.prefix;
+    }
 }

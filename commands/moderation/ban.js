@@ -1,9 +1,6 @@
-const { DiscordAPIError } = require("discord.js");
-
 module.exports = {
     commands: ['ban', 'fuckoff'],
     expectedArgs: '<user>',
-    permissionError: 'non hai i permessi necessari per eseguire questo comando.',
     minArgs: 1,
     maxArgs: 1,
     callback: (message, arguments, text, client) => {
