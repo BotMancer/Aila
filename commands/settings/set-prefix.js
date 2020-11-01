@@ -1,5 +1,5 @@
-const mongo = require('../../db/mongo');
-const serverSettingsSchema = require('../../db/schemas/server-settings-schema');
+const mongo = require('@db/mongo');
+const serverSettingsSchema = require('@schemas/server-settings-schema');
 
 module.exports = {
     commands: 'setprefix',

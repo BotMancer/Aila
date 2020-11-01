@@ -11,10 +11,10 @@ const { MessageEmbed } = require('discord.js');
 //Dotenv
 require('dotenv').config();
 
-const mongo = require('./db/mongo');
-const config = require('./config.json');
-const command = require('./command');
-const commandB = require('./commands/command-base');
+const mongo = require('@db/mongo');
+const config = require('@root/config.json');
+const command = require('@root/command');
+const commandB = require('@commands/command-base');
 
 client.on('ready', async () => {
     console.log('Il bot è pronto!');
@@ -36,7 +36,7 @@ client.on('ready', async () => {
         }
     });
 
-    const autoBan = require(`./events/security/autoban`)
+    const autoBan = require(`@events/security/autoban`)
     const readEvents = () => {
         autoBan(client);
     }
@@ -44,7 +44,7 @@ client.on('ready', async () => {
 
     //Advanced Command Handler implementation
     const baseFile = 'command-base.js';
-    const commandBase = require(`./commands/${baseFile}`);
+    const commandBase = require(`@commands/${baseFile}`);
     const readCommands = (dir) => {
         const files = fs.readdirSync(path.join(__dirname, dir));
         for (const file of files) {

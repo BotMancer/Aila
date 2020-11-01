@@ -1,6 +1,6 @@
-const { prefix: globalPrefix } = require('../config.json');
-const mongo = require('../db/mongo');
-const serverSettingsSchema = require('../db/schemas/server-settings-schema');
+const { prefix: globalPrefix } = require('@root/config.json');
+const mongo = require('@db/mongo');
+const serverSettingsSchema = require('@schemas/server-settings-schema');
 const guildPrefixes = {};
 
 const validatePermissions = (permissions) => {
