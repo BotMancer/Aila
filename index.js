@@ -1,23 +1,18 @@
-require('module-alias/register');
+require('module-alias/register'); //'@' routes NodeJS module.
+require('dotenv').config(); //.env NodeJS module.
 
-//Advanced Command Handler
-const path = require('path');
-const fs = require('fs');
 //Discord
 const Discord = require('discord.js');
 const client = new Discord.Client();
-//Embed Declaration
-const { MessageEmbed } = require('discord.js');
-//Dotenv
-require('dotenv').config();
 
+//Bot Configuration files.
 const mongo = require('@db/mongo');
 const config = require('@root/config.json');
-const command = require('@root/command');
 const loadCommands = require('@commands/load-commands');
 const commandBase = require('@commands/command-base');
 const loadFeatures = require('@features/load-features');
 
+//Bot main function.
 client.on('ready', async () => {
     console.log('Il bot è pronto!');
 
@@ -32,13 +27,13 @@ client.on('ready', async () => {
     loadCommands(client);
     loadFeatures(client);
 
-    const { prefix } = config;
     client.user.setPresence({
         activity: {
-            name: `${prefix}help | comandi.`,
-            type: 3
+            name: `${config.prefix}help | comandi.`,
+            type: 2
         }
     });
 });
 
+//Bot login on Discord servers.
 client.login(process.env.BOT_TOKEN);
