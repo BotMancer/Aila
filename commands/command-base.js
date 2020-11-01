@@ -1,11 +1,15 @@
-const { prefix } = require('../config.json');
+const { prefix: globalPrefix } = require('../config.json');
+const mongo = require('../db/mongo');
+const serverSettingsSchema = require('../db/schemas/server-settings-schema');
+const guildPrefixes = {};
+
 const validatePermissions = (permissions) => {
     const validPermissions = [
-        'ADMINISTRATOR', 
-        'CREATE_INSTANT_INVITE', 
+        'ADMINISTRATOR',
+        'CREATE_INSTANT_INVITE',
         'KICK_MEMBERS',
         'BAN_MEMBERS',
-        'MANAGE_CHANNELS', 
+        'MANAGE_CHANNELS',
         'MANAGE_GUILD',
         'ADD_REACTIONS',
         'VIEW_AUDIT_LOG',
@@ -14,17 +18,17 @@ const validatePermissions = (permissions) => {
         'VIEW_CHANNEL',
         'SEND_MESSAGES',
         'SEND_TTS_MESSAGES',
-        'MANAGE_MESSAGES', 
+        'MANAGE_MESSAGES',
         'EMBED_LINKS',
         'ATTACH_FILES',
-        'READ_MESSAGE_HISTORY', 
+        'READ_MESSAGE_HISTORY',
         'MENTION_EVERYONE',
-        'USE_EXTERNAL_EMOJIS', 
+        'USE_EXTERNAL_EMOJIS',
         'VIEW_GUILD_INSIGHTS',
-        'CONNECT', 
-        'SPEAK', 
-        'MUTE_MEMBERS', 
-        'DEAFEN_MEMBERS', 
+        'CONNECT',
+        'SPEAK',
+        'MUTE_MEMBERS',
+        'DEAFEN_MEMBERS',
         'MOVE_MEMBERS',
         'USE_VAD',
         'CHANGE_NICKNAME',
@@ -33,8 +37,8 @@ const validatePermissions = (permissions) => {
         'MANAGE_WEBHOOKS',
         'MANAGE_EMOJIS'
     ];
-    for(const permission of permissions){
-        if(!validPermissions.includes(permission)){
+    for (const permission of permissions) {
+        if (!validPermissions.includes(permission)) {
             throw new Error(`Rischiesto permesso sconosciuto "${permission}".`);
         };
     };
@@ -52,12 +56,12 @@ module.exports = (client, commandOptions) => {
     } = commandOptions;
 
     //Check che gli alias dei comandi siano all'interno di un array.
-    if(typeof commands === 'string'){
+    if (typeof commands === 'string') {
         commands = [commands];
     };
     //Check che i permessi siano in un array e siano tutti validi.
-    if(permissions.length){
-        if(typeof permissions === 'string'){
+    if (permissions.length) {
+        if (typeof permissions === 'string') {
             permissions = [permissions];
         };
         validatePermissions(permissions);
@@ -66,20 +70,22 @@ module.exports = (client, commandOptions) => {
     //Catching dei comandi.
     client.on('message', (message) => {
         const { member, content, guild } = message;
-        for(const alias of commands){
+        const prefix = guildPrefixes[guild.id] || globalPrefix;
+
+        for (const alias of commands) {
             const command = `${prefix}${alias.toLowerCase()}`;
-            if(content.toLowerCase().startsWith(`${command} `) || content.toLowerCase() === command){
+            if (content.toLowerCase().startsWith(`${command} `) || content.toLowerCase() === command) {
                 //Check dei permessi dell'utente.
-                for(const permission of permissions){
-                    if(!member.hasPermission(permission)){
+                for (const permission of permissions) {
+                    if (!member.hasPermission(permission)) {
                         message.reply(permissionError);
                         return
                     };
                 };
                 //Check dei ruoli dell'utente.
-                for(const requiredRole of requiredRoles){
+                for (const requiredRole of requiredRoles) {
                     const role = guild.roles.cache.find((role) => role.name === requiredRole);
-                    if(!role || !member.roles.cache.has(role.id)){
+                    if (!role || !member.roles.cache.has(role.id)) {
                         message.reply(`non hai il ruolo \`${requiredRole}\` necessario per eseguire questo comando`);
                         return
                     };
@@ -87,16 +93,32 @@ module.exports = (client, commandOptions) => {
                 const arguments = content.split(/[ ]+/);
                 arguments.shift();
                 //Check dei paramentri richiesti.
-                if(arguments.length < minArgs || (maxArgs !== null && arguments.length > maxArgs)){
+                if (arguments.length < minArgs || (maxArgs !== null && arguments.length > maxArgs)) {
                     message.reply(`sintassi del comando errata. Usa: \`${prefix}${alias} ${expectedArgs}\``);
                     return
                 }
                 //Log dell'esecuzione del comando.
-                console.log(`Running the command ${command}`);
+                console.log(`Running the command: ${alias}`);
                 //Codice specifico del comando.
                 callback(message, arguments, arguments.join(' '), client);
                 return
             }
         }
     })
+}
+
+module.exports.loadPrefixes = async (client) => {
+    await mongo().then(async mongoose => {
+        try {
+            for (const guild of client.guilds.cache) {
+                const guildID = guild[1].id;
+                const result = await serverSettingsSchema.findOne({ _id: guildID })
+                guildPrefixes[guildID] = result.prefix;
+            }
+
+            console.log(guildPrefixes);
+        } finally {
+            mongoose.connection.close();
+        }
+    });
 }
