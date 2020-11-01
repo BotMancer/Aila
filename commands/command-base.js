@@ -116,6 +116,4 @@ module.exports.loadPrefixes = async (client) => {
         const result = await serverSettingsSchema.findOne({ _id: guildID })
         guildPrefixes[guildID] = result.prefix;
     }
-
-    console.log(guildPrefixes);
 }
