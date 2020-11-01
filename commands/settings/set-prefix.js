@@ -13,7 +13,6 @@ module.exports = {
         await serverSettingsSchema.findByIdAndUpdate({
             _id: guild
         }, {
-            _id: guild,
             prefix
         }, {
             upsert: true

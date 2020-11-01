@@ -97,7 +97,7 @@ module.exports = (client, commandOptions) => {
                     return
                 }
                 //Log dell'esecuzione del comando.
-                console.log(`Running the command: ${alias}`);
+                console.log(`Running the command: ${alias} on ${guild.name}`);
                 //Codice specifico del comando.
                 callback(message, arguments, arguments.join(' '), client, prefix);
                 return
