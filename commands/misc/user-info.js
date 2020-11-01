@@ -20,6 +20,7 @@ module.exports = {
         const embed = new MessageEmbed()
             .setAuthor(`${user.tag}`, user.displayAvatarURL())
             .setThumbnail(`${user.displayAvatarURL()}`)
+            .setFooter(`ID: ${user.id} • Sent ${new Date(message.createdTimestamp).toLocaleDateString()} at ${new Date(message.createdTimestamp).toLocaleTimeString()}`)
             .addFields(
                 { name: 'Created', value: new Date(user.createdTimestamp).toLocaleString(), inline: true },
                 { name: 'Joined', value: new Date(member.joinedTimestamp).toLocaleString(), inline: true },
