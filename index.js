@@ -1,3 +1,5 @@
+require('module-alias/register');
+
 //Advanced Command Handler
 const path = require('path');
 const fs = require('fs');
