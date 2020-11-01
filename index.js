@@ -14,7 +14,8 @@ require('dotenv').config();
 const mongo = require('@db/mongo');
 const config = require('@root/config.json');
 const command = require('@root/command');
-const commandB = require('@commands/command-base');
+const loadCommands = require('@commands/load-commands');
+const commandBase = require('@commands/command-base');
 
 client.on('ready', async () => {
     console.log('Il bot è pronto!');
@@ -26,7 +27,8 @@ client.on('ready', async () => {
             mongoose.connection.close();
         }
     });
-    commandB.loadPrefixes(client);
+    commandBase.loadPrefixes(client);
+    loadCommands(client);
 
     const { prefix } = config;
     client.user.setPresence({
@@ -41,23 +43,6 @@ client.on('ready', async () => {
         autoBan(client);
     }
     readEvents();
-
-    //Advanced Command Handler implementation
-    const baseFile = 'command-base.js';
-    const commandBase = require(`@commands/${baseFile}`);
-    const readCommands = (dir) => {
-        const files = fs.readdirSync(path.join(__dirname, dir));
-        for (const file of files) {
-            const stat = fs.lstatSync(path.join(__dirname, dir, file));
-            if (stat.isDirectory()) {
-                readCommands(path.join(dir, file));
-            } else if (file !== baseFile) {
-                const option = require(path.join(__dirname, dir, file));
-                commandBase(client, option);
-            }
-        }
-    }
-    readCommands('commands')
 
     //Comando: Help
     command(client, ['help', 'comandi'], (message) => {
