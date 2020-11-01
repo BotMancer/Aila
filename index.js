@@ -9,9 +9,10 @@ const { MessageEmbed } = require('discord.js');
 //Dotenv
 require('dotenv').config();
 
-const mongo = require('./db/mongo')
+const mongo = require('./db/mongo');
 const config = require('./config.json');
 const command = require('./command');
+const commandB = require('./commands/command-base');
 
 client.on('ready', async () => {
     console.log('Il bot è pronto!');
@@ -23,6 +24,7 @@ client.on('ready', async () => {
             mongoose.connection.close();
         }
     });
+    commandB.loadPrefixes(client);
 
     const { prefix } = config;
     client.user.setPresence({
