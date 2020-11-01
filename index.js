@@ -14,15 +14,9 @@ const loadFeatures = require('@features/load-features');
 
 //Bot main function.
 client.on('ready', async () => {
-    console.log('Il bot è pronto!');
+    console.log('Aila is ready!');
 
-    await mongo().then(mongoose => {
-        try {
-            console.log('Connected!')
-        } finally {
-            mongoose.connection.close();
-        }
-    });
+    await mongo().then(() => { console.log('Aila is connected to MongoDB database!') });
     commandBase.loadPrefixes(client);
     loadCommands(client);
     loadFeatures(client);

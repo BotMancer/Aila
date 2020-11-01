@@ -112,17 +112,11 @@ module.exports.updateCache = (guildId, newPrefix) => {
 }
 
 module.exports.loadPrefixes = async (client) => {
-    await mongo().then(async mongoose => {
-        try {
-            for (const guild of client.guilds.cache) {
-                const guildID = guild[1].id;
-                const result = await serverSettingsSchema.findOne({ _id: guildID })
-                guildPrefixes[guildID] = result.prefix;
-            }
+    for (const guild of client.guilds.cache) {
+        const guildID = guild[1].id;
+        const result = await serverSettingsSchema.findOne({ _id: guildID })
+        guildPrefixes[guildID] = result.prefix;
+    }
 
-            console.log(guildPrefixes);
-        } finally {
-            mongoose.connection.close();
-        }
-    });
+    console.log(guildPrefixes);
 }
