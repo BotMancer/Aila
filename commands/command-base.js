@@ -107,6 +107,10 @@ module.exports = (client, commandOptions) => {
     })
 }
 
+module.exports.updateCache = (guildId, newPrefix) => {
+    guildPrefixes[guildId] = newPrefix
+}
+
 module.exports.loadPrefixes = async (client) => {
     await mongo().then(async mongoose => {
         try {

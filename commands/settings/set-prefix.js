@@ -1,5 +1,6 @@
 const mongo = require('@db/mongo');
 const serverSettingsSchema = require('@schemas/server-settings-schema');
+const commandBase = require('@commands/command-base');
 
 module.exports = {
     commands: 'setprefix',
@@ -23,6 +24,9 @@ module.exports = {
                 });
 
                 message.reply(`Il prefisso per questo server è ora: ${prefix}`);
+
+                //Update cache
+                commandBase.updateCache(guild, prefix);
             } finally{
                 mongoose.connection.close();
             }
