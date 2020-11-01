@@ -8,6 +8,7 @@ const client = new Discord.Client();
 //Bot Configuration files.
 const mongo = require('@db/mongo');
 const config = require('@root/config.json');
+const loadEvents = require('@events/load-events');
 const loadCommands = require('@commands/load-commands');
 const commandBase = require('@commands/command-base');
 const loadFeatures = require('@features/load-features');
@@ -17,6 +18,7 @@ client.on('ready', async () => {
     console.log('Aila is ready!');
 
     await mongo().then(() => { console.log('Aila is connected to MongoDB database!') });
+    loadEvents(client);
     commandBase.loadPrefixes(client);
     loadCommands(client);
     loadFeatures(client);

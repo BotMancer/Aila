@@ -27,6 +27,7 @@
     "@root": ".",
     "@commands": "./commands",
     "@features": "./features",
+    "@events": "./events",
     "@db": "./db",
     "@schemas": "./db/schemas"
   }
