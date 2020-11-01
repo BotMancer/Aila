@@ -15,14 +15,14 @@ module.exports = (client) => {
             } else if (file !== loadFile) {
                 for (const guild of client.guilds.cache) {
                     const guildID = guild[1].id;
+                    const featureName = file.split('.')[0];
+                    const feature = require(path.join(__dirname, dir, file));
+
                     const result = await serverSettingsSchema.findOne({ _id: guildID });
-                    for (const featureSetting in result.features) {
-                        if (file.split('.')[0] === featureSetting && result.features[featureSetting] === true) {
-                            const feature = require(path.join(__dirname, dir, file));
-                            console.log(`Enabling feature: ${file.split('.')[0]} on ${guild[1].name}`);
-                            feature(client);
-                        } else {
-                            console.log(`Disabling feature: ${file.split('.')[0]} on ${guild[1].name}`);
+
+                    for (const featureProp in result.features) {
+                        if (featureName === featureProp) {
+                            feature(client, guild[1], result.features[featureProp]);
                         }
                     }
                 }
@@ -31,4 +31,10 @@ module.exports = (client) => {
     }
 
     readFeatures('.');
+}
+
+module.exports.reloadFeature = (featurePath, featureName, client, guild, enabled) => {
+    const featureToReload = require(`@features/${featurePath}.js`);
+    console.log(`Reloading feature: ${featureName} on ${guild.name}`);
+    featureToReload(client, guild, enabled);
 }
