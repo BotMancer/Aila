@@ -5,7 +5,10 @@ module.exports = (client) => {
     client.on('guildCreate', async (guild) => {
         await serverSettingsSchema({
             _id: guild.id,
-            prefix: config.prefix
+            prefix: config.prefix,
+            features: {
+                autoban: config.features.autoban
+            }
         }).save();
     });
 }
