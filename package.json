@@ -26,7 +26,7 @@
   "_moduleAliases": {
     "@root": ".",
     "@commands": "./commands",
-    "@events": "./events",
+    "@features": "./features",
     "@db": "./db",
     "@schemas": "./db/schemas"
   }

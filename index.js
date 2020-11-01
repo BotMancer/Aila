@@ -16,6 +16,7 @@ const config = require('@root/config.json');
 const command = require('@root/command');
 const loadCommands = require('@commands/load-commands');
 const commandBase = require('@commands/command-base');
+const loadFeatures = require('@features/load-features');
 
 client.on('ready', async () => {
     console.log('Il bot è pronto!');
@@ -29,6 +30,7 @@ client.on('ready', async () => {
     });
     commandBase.loadPrefixes(client);
     loadCommands(client);
+    loadFeatures(client);
 
     const { prefix } = config;
     client.user.setPresence({
@@ -37,12 +39,6 @@ client.on('ready', async () => {
             type: 3
         }
     });
-
-    const autoBan = require(`@events/security/autoban`)
-    const readEvents = () => {
-        autoBan(client);
-    }
-    readEvents();
 
     //Comando: Help
     command(client, ['help', 'comandi'], (message) => {
