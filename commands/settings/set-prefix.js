@@ -1,4 +1,3 @@
-const mongo = require('@db/mongo');
 const serverSettingsSchema = require('@schemas/server-settings-schema');
 const commandBase = require('@commands/command-base');
 
