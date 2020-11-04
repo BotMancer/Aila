@@ -15,6 +15,7 @@ const loadFeatures = require('@features/load-features');
 
 //Bot main function.
 client.on('ready', async () => {
+    client.setMaxListeners(0);
     console.log('Aila is ready!');
 
     await mongo().then(() => { console.log('Aila is connected to MongoDB database!') });
