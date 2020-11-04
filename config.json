@@ -1,5 +1,6 @@
 {
     "prefix": "a!",
+    "color": "#b39adb",
     "features": {
         "autoban": false
     },

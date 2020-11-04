@@ -1,5 +1,6 @@
 //Embed Declaration
 const { MessageEmbed } = require('discord.js');
+const { color } = require('@root/config.json');
 const serverSettingsSchema = require('@schemas/server-settings-schema');
 
 function DiffDays(creationDate, todayDate) {
@@ -26,9 +27,9 @@ module.exports = (client, guild) => {
                 const memberAge = DiffDays(Date.parse(memberCreationDate), Date.parse(todayDate));
                 if (memberAge <= 3) {
                     const embed = new MessageEmbed()
-                        .setTitle('Membro Bannato')
-                        .setColor('#F59EFF')
-                        .setThumbnail(client.user.displayAvatarURL())
+                        .setAuthor(`User banned from ${client.user.username}`, client.user.displayAvatarURL())
+                        .setFooter(`Sent ${new Date(message.createdTimestamp).toLocaleDateString()} at ${new Date(message.createdTimestamp).toLocaleTimeString()}`)
+                        .setColor(color)
                         .addFields(
                             { name: 'Target', value: `<@${member.id}>` },
                             { name: 'Motivazione', value: `L'account non rispetta i 3 giorni di registrazione minimi richiesti.` }

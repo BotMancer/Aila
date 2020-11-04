@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
-const { version } = require('@root/package.json')
+const { version } = require('@root/package.json');
+const { color } = require('@root/config.json');
 
 module.exports = {
     commands: 'botinfo',
@@ -16,6 +17,7 @@ module.exports = {
         const embed = new MessageEmbed()
             .setAuthor(`${username}`, client.user.displayAvatarURL())
             .setFooter(`ID: ${id} • Sent ${new Date(message.createdTimestamp).toLocaleDateString()} at ${new Date(message.createdTimestamp).toLocaleTimeString()}`)
+            .setColor(color)
             .addFields(
                 { name: 'Version', value: version, inline: true },
                 { name: 'Language', value: 'Node.js', inline: true },
