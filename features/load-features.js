@@ -22,19 +22,19 @@ module.exports = (client) => {
 
                     for (const featureProp in result.features) {
                         if (featureName === featureProp) {
-                            feature(client, guild[1], result.features[featureProp]);
+                            const state = result.features[featureProp];
+                            if (state) {
+                                console.log(`Enabled feature: ${featureName} on ${guild[1].name}`);
+                            } else {
+                                console.log(`Disabled feature: ${featureName} on ${guild[1].name}`);
+                            }
                         }
                     }
+                    feature(client, guild[1]);
                 }
             }
         }
     }
 
     readFeatures('.');
-}
-
-module.exports.reloadFeature = (featurePath, featureName, client, guild, enabled) => {
-    const featureToReload = require(`@features/${featurePath}.js`);
-    console.log(`Reloading feature: ${featureName} on ${guild.name}`);
-    featureToReload(client, guild, enabled);
 }

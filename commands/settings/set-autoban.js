@@ -1,5 +1,4 @@
 const serverSettingsSchema = require('@schemas/server-settings-schema');
-const loadFeatures = require('@features/load-features');
 
 module.exports = {
     commands: 'setautoban',
@@ -23,7 +22,7 @@ module.exports = {
             upsert: true
         });
 
-        loadFeatures.reloadFeature('security/autoban', 'Autoban', client, message.guild, state());
+        console.log(`Reloading feature: autoban on ${message.guild.name}`);
 
         message.channel.send(`Autoban feature state: \`${arguments[0]}\``);
     },
