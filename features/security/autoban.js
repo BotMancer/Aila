@@ -1,4 +1,3 @@
-//Embed Declaration
 const { MessageEmbed } = require('discord.js');
 const { color } = require('@root/config.json');
 const serverSettingsSchema = require('@schemas/server-settings-schema');
@@ -32,11 +31,13 @@ module.exports = (client, guild) => {
                         .setColor(color)
                         .addFields(
                             { name: 'Target', value: `<@${member.id}>` },
-                            { name: 'Motivazione', value: `L'account non rispetta i 3 giorni di registrazione minimi richiesti.` }
+                            { name: 'Reason', value: `L'account non rispetta i 3 giorni di registrazione minimi richiesti.` }
                         )
 
                     console.log(`Attivazione misure di sicurezza sull'account ${member.user.username} - ${member.id}`);
-                    member.ban().then(() => {
+                    member.ban({
+                        reason: "L'account non rispetta i 3 giorni di registrazione minimi richiesti. Aila."
+                    }).then(() => {
                         if (log_channel != null || log_channel != undefined) {
                             const logChannel = member.guild.channels.cache.get(log_channel);
                             logChannel.send(embed);
