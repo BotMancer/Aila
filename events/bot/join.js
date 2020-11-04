@@ -7,7 +7,10 @@ module.exports = (client) => {
             _id: guild.id,
             prefix: config.prefix,
             features: {
-                autoban: config.features.autoban
+                autoban: {
+                    state: config.features.autoban,
+                    log_channel: null
+                }
             }
         }).save();
     });

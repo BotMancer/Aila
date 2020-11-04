@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const { color } = require('@root/config.json');
 
 module.exports = {
     commands: 'serverinfo',
@@ -23,6 +24,7 @@ module.exports = {
             .setAuthor(`${guild.name}`, icon)
             .setThumbnail(icon)
             .setFooter(`ID: ${guild.id} • Sent ${new Date(message.createdTimestamp).toLocaleDateString()} at ${new Date(message.createdTimestamp).toLocaleTimeString()}`)
+            .setColor(color)
             .addFields(
                 { name: 'Owner', value: `${guild.owner.user.tag}`, inline: true },
                 { name: 'Region', value: `${guild.region.charAt(0).toUpperCase() + guild.region.slice(1)}`, inline: true },
