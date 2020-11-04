@@ -9,15 +9,15 @@ function DiffDays(creationDate, todayDate) {
 
 const checkState = async (guildID) => {
     const serverSettings = await serverSettingsSchema.findOne({ _id: guildID });
-    const state = serverSettings.features['autoban'];
-    return state;
+    const { state, log_channel } = serverSettings.features['autoban'];
+    return { state, log_channel };
 }
 
 module.exports = (client, guild) => {
     client.on('guildMemberAdd', async (member) => {
         if (guild == member.guild) {
             //Getting state from DB.
-            const state = await checkState(member.guild.id);
+            const { state, log_channel } = await checkState(member.guild.id);
             //Checking state and if true ban user.
             if (state) {
                 var todayDate = new Date();
@@ -28,15 +28,19 @@ module.exports = (client, guild) => {
                     const embed = new MessageEmbed()
                         .setTitle('Membro Bannato')
                         .setColor('#F59EFF')
-                        .setThumbnail('https://i.imgur.com/YGNKjhc.png')
+                        .setThumbnail(client.user.displayAvatarURL())
                         .addFields(
                             { name: 'Target', value: `<@${member.id}>` },
                             { name: 'Motivazione', value: `L'account non rispetta i 3 giorni di registrazione minimi richiesti.` }
                         )
-                    //const logChannelID = '772206449891475506';
-                    //const logChannel = member.guild.channels.cache.get(logChannelID);
+
                     console.log(`Attivazione misure di sicurezza sull'account ${member.user.username} - ${member.id}`);
-                    member.ban();//.then(logChannel.send(embed));
+                    member.ban().then(() => {
+                        if (log_channel != null || log_channel != undefined) {
+                            const logChannel = member.guild.channels.cache.get(log_channel);
+                            logChannel.send(embed);
+                        }
+                    });
                 };
             }
         }

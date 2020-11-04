@@ -22,7 +22,7 @@ module.exports = (client) => {
 
                     for (const featureProp in result.features) {
                         if (featureName === featureProp) {
-                            const state = result.features[featureProp];
+                            const state = result.features[featureProp].state;
                             if (state) {
                                 console.log(`Enabled feature: ${featureName} on ${guild[1].name}`);
                             } else {
