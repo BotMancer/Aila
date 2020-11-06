@@ -6,12 +6,12 @@ const serverSettingsSchema = mongoose.Schema({
         type: String,
         required: true
     },
-
+    //Per-Server prefix.
     prefix: {
         type: String,
         required: true
     },
-
+    //Per-Server features settings and states.
     features: {
         type: Object,
         required: true
