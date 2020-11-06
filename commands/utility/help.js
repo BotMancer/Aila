@@ -1,14 +1,14 @@
 const { MessageEmbed } = require('discord.js');
+const { color } = require('@root/config.json');
 
 module.exports = {
     commands: ['help', 'comandi'],
-    minArgs: 0,
     maxArgs: 0,
     callback: (message, arguments, text, client, prefix) => {
         const embed = new MessageEmbed()
-            .setColor('#F59EFF')
-            .setTitle(`Comandi - Prefisso \`${prefix}\``)
-            .setThumbnail('https://i.imgur.com/YGNKjhc.png')
+            .setColor(color)
+            .setTitle(`Commands - Prefix \`${prefix}\``)
+            .setThumbnail(client.user.displayAvatarURL())
             .addFields(
                 { name: `${prefix}help`, value: 'Visualizza questo messaggio.' },
                 { name: `${prefix}status`, value: 'Aggiorna lo status del bot.' },

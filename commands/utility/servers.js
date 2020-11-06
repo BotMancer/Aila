@@ -1,21 +1,23 @@
 const { MessageEmbed } = require('discord.js');
+const { color } = require('@root/config.json');
+
 module.exports = {
     commands: 'servers',
-    minArgs: 0,
     maxArgs: 0,
     callback: (message, arguments, text, client) => {
+        let current = 0;
         client.guilds.cache.forEach((guild) => {
+            current++;
             const embed = new MessageEmbed()
-                .setTitle('Elenco Server')
-                .setColor('#F59EFF')
-                .setDescription('Elenco dei server dove è presente il bot.')
-                .setThumbnail('https://i.imgur.com/YGNKjhc.png')
+                .setTitle(`Server n${current}`)
+                .setColor(color)
+                .setThumbnail(client.user.displayAvatarURL())
                 .addFields(
-                    { name: 'Nome Server', value: `\`${guild.name}\``, inline: true},
-                    { name: 'ID Server', value: `\`${guild.id}\``, inline: true},
-                    { name: 'Joinato il', value: `\`${guild.joinedAt}\``},
-                    { name: 'Owner del server', value: `${guild.owner}`, inline: true},
-                    { name: 'Membri del server', value: `${guild.memberCount}`, inline: true}
+                    { name: 'Server name', value: `\`${guild.name}\``, inline: true },
+                    { name: 'Server ID', value: `\`${guild.id}\``, inline: true },
+                    { name: 'Joined', value: `\`${guild.joinedAt}\`` },
+                    { name: 'Server\'s owner', value: `${guild.owner}`, inline: true },
+                    { name: 'Server\'s members', value: `${guild.memberCount}`, inline: true }
                 )
             message.channel.send(embed);
         })
