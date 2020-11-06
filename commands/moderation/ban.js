@@ -7,8 +7,9 @@ module.exports = {
         message.delete();
         const targetUser = message.mentions.users.first();
         const targetMember = message.guild.member(targetUser);
+
         targetMember.ban().then(() => {
-            message.reply(`l'utente ${targetMember} è stato bannato dal server.`);
+            message.reply(`L'utente ${targetMember} è stato bannato dal server.`);
         });
     },
     permissions: ['ADMINISTRATOR', 'BAN_MEMBERS'],

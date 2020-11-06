@@ -4,13 +4,14 @@ const { color } = require('@root/config.json');
 
 module.exports = {
     commands: 'botinfo',
-    minArgs: 0,
     maxArgs: 0,
     callback: (message, arguments, text, client) => {
         const guilds = client.guilds.cache.size;
-        let users = 0;
+
+        //Getting users amount cross-servers.
+        let globalUsers = 0;
         for (const guild of client.guilds.cache) {
-            users += guild[1].memberCount;
+            globalUsers += guild[1].memberCount;
         }
 
         const { username, id } = client.user;
@@ -23,7 +24,7 @@ module.exports = {
                 { name: 'Language', value: 'Node.js', inline: true },
                 { name: 'Daddy', value: 'isla#8212', inline: true },
                 { name: 'Servers', value: guilds, inline: true },
-                { name: 'Users', value: users, inline: true }
+                { name: 'Users', value: globalUsers, inline: true }
             )
 
         message.channel.send(embed);

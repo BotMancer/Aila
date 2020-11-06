@@ -3,7 +3,6 @@ const { color } = require('@root/config.json');
 
 module.exports = {
     commands: 'serverinfo',
-    minArgs: 0,
     maxArgs: 0,
     callback: (message, arguments, text, client) => {
         const guild = message.guild;

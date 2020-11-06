@@ -4,7 +4,6 @@ const { color } = require('@root/config.json');
 module.exports = {
     commands: 'userinfo',
     expectedArgs: '<user>',
-    minArgs: 0,
     maxArgs: 1,
     callback: (message, arguments, text, client) => {
         const user = message.mentions.users.first() || message.member.user;

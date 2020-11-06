@@ -1,12 +1,13 @@
 const { ownerID } = require('@root/config.json');
+
 module.exports = {
     commands: 'eval',
-    expectedArgs: '<comand>',
+    expectedArgs: '<command>',
     minArgs: 1,
     maxArgs: 1,
     callback: async (message, arguments, text, client) => {
         await message.react("🌸");
-        if(message.member.id === ownerID){
+        if (message.member.id === ownerID) {
             eval(arguments.toString());
         }
     },

@@ -18,7 +18,7 @@ module.exports = {
             upsert: true
         });
 
-        message.reply(`Il prefisso per questo server è ora: \`${prefix}\``);
+        message.reply(`The new server prefix is: \`${prefix}\``);
 
         //Update cache
         commandBase.updateCache(guild, prefix);

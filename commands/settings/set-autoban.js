@@ -2,15 +2,17 @@ const serverSettingsSchema = require('@schemas/server-settings-schema');
 
 module.exports = {
     commands: 'setautoban',
-    expectedArgs: '<enabled/disabled> <channel>',
+    expectedArgs: '<state> <channel>',
     minArgs: 1,
     maxArgs: 2,
     callback: async (message, arguments, text, client) => {
         const guild = message.guild.id;
+        //validate user input for state
         const state = () => {
             if (arguments[0] === 'enabled') return true;
             if (arguments[0] === 'disabled') return false;
         }
+        //validate user input for #logchannel
         const log_channel = () => {
             if (message.mentions.channels.first() === undefined) return null;
             if (arguments[0] === 'disabled') return null;
