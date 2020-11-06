@@ -1,16 +1,13 @@
-const { prefix } = require('@root/config.json');
 module.exports = {
     commands: 'clear',
-    expectedArgs: '<quantità>',
+    expectedArgs: '<amount>',
     minArgs: 1,
     maxArgs: 1,
     callback: (message, arguments, text, client) => {
         const amount = parseInt(arguments);
-        if(isNaN(amount)){
-            let alias = 'clear';
-            let expectedArg = '<quantità>';
-            message.reply(`sintassi del comando errata. Usa: \`${prefix}${alias} ${expectedArg}\``);
-        } else{
+        if (isNaN(amount)) {
+            message.reply(`Incorrect syntax. Insert a number.`);
+        } else {
             message.delete();
             message.channel.messages.fetch().then(() => {
                 message.channel.bulkDelete(amount);
