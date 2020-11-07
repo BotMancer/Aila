@@ -69,10 +69,13 @@ module.exports = (client, commandOptions) => {
     //Catching dei comandi.
     client.on('message', (message) => {
         const { member, content, guild } = message;
-        const prefix = guildPrefixes[guild.id] || globalPrefix;
+
+        if (message.author.bot) return;
 
         for (const alias of commands) {
+            const prefix = guildPrefixes[guild.id] || globalPrefix;
             const command = `${prefix}${alias.toLowerCase()}`;
+
             if (content.toLowerCase().startsWith(`${command} `) || content.toLowerCase() === command) {
                 //Check dei permessi dell'utente.
                 for (const permission of permissions) {
@@ -113,7 +116,8 @@ module.exports.updateCache = (guildId, newPrefix) => {
 module.exports.loadPrefixes = async (client) => {
     for (const guild of client.guilds.cache) {
         const guildID = guild[1].id;
+
         const result = await serverSettingsSchema.findOne({ _id: guildID })
-        guildPrefixes[guildID] = result.prefix;
+        guildPrefixes[guildID] = result ? result.prefix : globalPrefix;
     }
 }
