@@ -2,7 +2,8 @@
     "prefix": "a!",
     "color": "#b39adb",
     "features": {
-        "autoban": false
+        "autoban": false,
+        "disboard": false
     },
     "ownerID": "385895205406244865"
 }
