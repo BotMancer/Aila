@@ -10,6 +10,11 @@ module.exports = (client) => {
                 autoban: {
                     state: config.features.autoban,
                     log_channel: null
+                },
+                disboard: {
+                    state: config.features.disboard,
+                    log_channel: null,
+                    role: null
                 }
             }
         }).save();
