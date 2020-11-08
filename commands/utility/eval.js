@@ -6,7 +6,6 @@ module.exports = {
     minArgs: 1,
     maxArgs: 1,
     callback: async (message, arguments, text, client) => {
-        await message.react("🌸");
         if (message.member.id === ownerID) {
             eval(arguments.toString());
         }
