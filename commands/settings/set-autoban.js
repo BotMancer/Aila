@@ -6,17 +6,22 @@ module.exports = {
     minArgs: 1,
     maxArgs: 2,
     callback: async (message, arguments, text, client) => {
+        const userState = arguments[0];
         const guild = message.guild.id;
         //validate user input for state
+        if (userState != 'enabled' && userState != 'disabled') {
+            message.channel.send(`\`${userState}\` state not supported.\nUse \`enabled\` to **enable** the feature.\nUse \`disabled\` to **disable** the feature.`);
+            return;
+        }
         const state = () => {
-            if (arguments[0] === 'enabled') return true;
-            if (arguments[0] === 'disabled') return false;
+            if (userState === 'enabled') return true;
+            if (userState === 'disabled') return false;
         }
         //validate user input for #logchannel
         const log_channel = () => {
             if (message.mentions.channels.first() === undefined) return null;
-            if (arguments[0] === 'disabled') return null;
-            if (arguments[0] === 'enabled') return message.mentions.channels.first().id;
+            if (userState === 'disabled') return null;
+            if (userState === 'enabled') return message.mentions.channels.first().id;
         }
 
         await serverSettingsSchema.findByIdAndUpdate({
@@ -32,7 +37,7 @@ module.exports = {
 
         console.log(`Reloading feature: autoban on ${message.guild.name}`);
 
-        message.channel.send(`Autoban feature state: \`${arguments[0]}\``);
+        message.channel.send(`Autoban feature state: \`${userState}\``);
     },
     permissions: 'ADMINISTRATOR',
     requiredRoles: [],
