@@ -7,7 +7,7 @@
     <br>
 </h1>
 
-<h4 align=center>Moderation, Security, Alerts - Fully Customizable.</h4>
+<h4 align=center>Moderation, Security, Alerts and more - for Users, by Users.</h4>
 
 <p align="center">
   <a href="#overview">Overview 🔎</a>
@@ -22,7 +22,7 @@
 ## Overview
 
 Aila is a fully customizable Discord Bot, meaning that all features can be enabled/disable as you wish, adapting it to your needs.  
-My wish is to keep this bot hosted on proprietary servers, to make the experience more enjoyable and not put pressure on you, but if you want you can *self-host* your own instance and maintain it.
+My wish is to keep this bot hosted on proprietary servers, to make the experience more enjoyable and not put pressure on you *(so consider to Sponsor this project to help me to maintain it :3)*, but if you want you can *self-host* your own instance and maintain it.
 
 
 ## Documentation
