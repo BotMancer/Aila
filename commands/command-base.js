@@ -67,7 +67,7 @@ module.exports = (client, commandOptions) => {
     };
 
     //Catching dei comandi.
-    client.on('message', (message) => {
+    client.on('message', async (message) => {
         const { member, content, guild } = message;
 
         if (message.author.bot) return;
@@ -101,6 +101,8 @@ module.exports = (client, commandOptions) => {
                 }
                 //Log dell'esecuzione del comando.
                 console.log(`Running the command: ${alias} on ${guild.name}`);
+                //Reaction to command.
+                await message.react("🌺");
                 //Codice specifico del comando.
                 callback(message, arguments, arguments.join(' '), client, prefix);
                 return
@@ -110,7 +112,7 @@ module.exports = (client, commandOptions) => {
 }
 
 module.exports.updateCache = (guildId, newPrefix) => {
-    guildPrefixes[guildId] = newPrefix
+    guildPrefixes[guildId] = newPrefix;
 }
 
 module.exports.loadPrefixes = async (client) => {
