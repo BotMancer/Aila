@@ -1,0 +1,91 @@
+{
+    "languages": [
+        "english",
+        "italian"
+    ],
+    "traslations": {
+        "botinfo": {
+            "cmd": "botinfo",
+            "expArgs": ""
+        },
+        "serverinfo": {
+            "cmd": "serverinfo",
+            "expArgs": ""
+        },
+        "userinfo": {
+            "cmd": "botinfo",
+            "eng": {
+                "expArgs": "<user>"
+            },
+            "ita": {
+                "expArgs": "<utente>"
+            }
+        },
+        "ban": {
+            "cmd": "ban",
+            "eng": {
+                "expArgs": "<user>",
+                "reply": "has been banned from the server."
+            },
+            "ita": {
+                "expArgs": "<utente>",
+                "reply": "è stato bannato dal server."
+            }
+        },
+        "kick": {
+            "cmd": "kick",
+            "eng": {
+                "expArgs": "<user>",
+                "reply": "has been kicked from the server."
+            },
+            "ita": {
+                "expArgs": "<utente>",
+                "reply": "è stato kickato dal server."
+            }
+        },
+        "clear": {
+            "cmd": "clear",
+            "eng": {
+                "expArgs": "<amount>",
+                "reply": "Incorrect syntax. Insert a number."
+            },
+            "ita": {
+                "expArgs": "<quantità>",
+                "reply": "Sintassi errata. Inserire un numero."
+            }
+        },
+        "clearall": {
+            "cmd": [
+                "cc",
+                "clearall"
+            ],
+            "expArgs": ""
+        },
+        "eval": {
+            "cmd": "eval",
+            "eng": {
+                "expArgs": "<command>",
+                "reply": ""
+            },
+            "ita": {
+                "expArgs": "<comando>",
+                "reply": ""
+            }
+        },
+        "servers": {
+            "cmd": "servers",
+            "expArgs": ""
+        },
+        "status": {
+            "cmd": "status",
+            "eng": {
+                "expArgs": "<type(0/3)> <text..>",
+                "reply": "Incorrect syntax. Insert a number."
+            },
+            "ita": {
+                "expArgs": "<tipo(0/3)> <testo..>",
+                "reply": "Sintassi errata. Inserire un numero."
+            }
+        }
+    }
+}
