@@ -26,7 +26,7 @@ module.exports.loadLanguages = async (client) => {
     }
 }
 
-module.exports.setLanguage = (guildID, language) => {
-    guildLanguages[guildID] = language.toLowerCase();
+module.exports.setLanguage = (guild, language) => {
+    guildLanguages[guild.id] = language.toLowerCase();
 }
 

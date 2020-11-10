@@ -1,5 +1,5 @@
 const serverSettingsSchema = require('@schemas/server-settings-schema');
-const { languages } = require('@i18n/commands.json')
+const { languages } = require('@i18n/languages.json')
 const { setLanguage } = require('@i18n/i18n');
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
     expectedArgs: '<language>',
     minArgs: 1,
     maxArgs: 1,
-    callback: (message, arguments, text, client) => {
+    callback: async (message, arguments, text, client) => {
         const { guild } = message;
 
         const newLanguage = arguments[0].toLowerCase();
