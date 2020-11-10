@@ -18,11 +18,12 @@ module.exports = (client) => {
                 readCommands(path.join(dir, file));
             } else if (file !== baseFile && file !== loadFile) {
                 const option = require(path.join(__dirname, dir, file));
+                const commandPath = path.join('commands', dir, file).split('.')[0].replace('-', '').split('\\');
 
                 commands.push(option);
 
                 if (client) {
-                    commandBase(client, option);
+                    commandBase(client, option, commandPath);
                 }
             }
         }
