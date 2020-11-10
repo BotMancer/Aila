@@ -1,5 +1,6 @@
 const serverSettingsSchema = require('@schemas/server-settings-schema');
 const { languages } = require('@i18n/commands.json')
+const { setLanguage } = require('@i18n/i18n');
 
 module.exports = {
     commands: ['setlang', 'setlanguage'],
@@ -15,6 +16,8 @@ module.exports = {
             message.reply('Language not supported.');
             return
         }
+
+        setLanguage(guild, newLanguage);
 
         await serverSettingsSchema.findByIdAndUpdate({
             _id: guild.id
