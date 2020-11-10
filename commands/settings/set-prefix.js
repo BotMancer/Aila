@@ -13,7 +13,9 @@ module.exports = {
         await serverSettingsSchema.findByIdAndUpdate({
             _id: guild
         }, {
-            prefix
+            $set: {
+                "prefix": prefix
+            }
         }, {
             upsert: true
         });
