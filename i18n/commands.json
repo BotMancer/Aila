@@ -14,42 +14,42 @@
         },
         "userinfo": {
             "cmd": "botinfo",
-            "eng": {
+            "english": {
                 "expArgs": "<user>"
             },
-            "ita": {
+            "italian": {
                 "expArgs": "<utente>"
             }
         },
         "ban": {
             "cmd": "ban",
-            "eng": {
+            "english": {
                 "expArgs": "<user>",
                 "reply": "has been banned from the server."
             },
-            "ita": {
+            "italian": {
                 "expArgs": "<utente>",
                 "reply": "è stato bannato dal server."
             }
         },
         "kick": {
             "cmd": "kick",
-            "eng": {
+            "english": {
                 "expArgs": "<user>",
                 "reply": "has been kicked from the server."
             },
-            "ita": {
+            "italian": {
                 "expArgs": "<utente>",
                 "reply": "è stato kickato dal server."
             }
         },
         "clear": {
             "cmd": "clear",
-            "eng": {
+            "english": {
                 "expArgs": "<amount>",
                 "reply": "Incorrect syntax. Insert a number."
             },
-            "ita": {
+            "italian": {
                 "expArgs": "<quantità>",
                 "reply": "Sintassi errata. Inserire un numero."
             }
@@ -63,11 +63,11 @@
         },
         "eval": {
             "cmd": "eval",
-            "eng": {
+            "english": {
                 "expArgs": "<command>",
                 "reply": ""
             },
-            "ita": {
+            "italian": {
                 "expArgs": "<comando>",
                 "reply": ""
             }
@@ -78,11 +78,11 @@
         },
         "status": {
             "cmd": "status",
-            "eng": {
+            "english": {
                 "expArgs": "<type(0/3)> <text..>",
                 "reply": "Incorrect syntax. Insert a number."
             },
-            "ita": {
+            "italian": {
                 "expArgs": "<tipo(0/3)> <testo..>",
                 "reply": "Sintassi errata. Inserire un numero."
             }
