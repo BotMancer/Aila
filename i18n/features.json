@@ -6,16 +6,19 @@
     "traslations": {
         "autoban": {
             "english": {
+                "desc": "Autoban an user on join if account-age does not meet the required minimum days of registration.",
                 "title": "User banned from ",
                 "reason": "The account-age does not meet the required minimum days of registration. Aila."
             },
             "italian": {
+                "desc": "Banna automaticamente un utente quanto joina se l'età dell'account non soddisfa i giorni minimi richiesti per la registrazione.",
                 "title": "Utente bannato da ",
                 "reason": "L'età dell'account non soddisfa i giorni minimi richiesti per la registrazione. Aila."
             }
         },
         "disboard": {
             "english": {
+                "desc": "Automatically send a message when Disboard bump cooldown is off.",
                 "reminder": {
                     "title": "Disboard cooldown is off!",
                     "message": "The cooldown to Bump the Server is over, type immediately `!d bump` to bump again!"
@@ -26,6 +29,7 @@
                 }
             },
             "italian": {
+                "desc": "Invia automaticamente un messaggio quando il cooldown per il bump di Disboard è terminato.",
                 "reminder": {
                     "title": "Il cooldown di Disboard è terminato!",
                     "message": "Il cooldown per Bumpare il Server è terminato, digita subito `!d bump` per bumparlo nuovamente!"
