@@ -1,9 +1,10 @@
 {
     "prefix": "a!",
-    "color": "#b39adb",
+    "language": "english",
     "features": {
         "autoban": false,
         "disboard": false
     },
+    "color": "#b39adb",
     "ownerID": "385895205406244865"
 }
