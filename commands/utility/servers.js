@@ -9,7 +9,7 @@ module.exports = {
         client.guilds.cache.forEach((guild) => {
             current++;
             const embed = new MessageEmbed()
-                .setTitle(`Server n${current}`)
+                .setTitle(`Server ${current}`)
                 .setColor(color)
                 .setThumbnail(client.user.displayAvatarURL())
                 .addFields(

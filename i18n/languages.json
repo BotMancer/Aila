@@ -166,7 +166,7 @@
                         "desc": "Cambia la lingua attuale del server.",
                         "expArgs": "<nuova lingua>",
                         "error": "Lingua non supportata.",
-                        "reply": "Il nuovo prefisso del server è: "
+                        "reply": "La nuova lingua del server è: "
                     }
                 }
             },
@@ -200,12 +200,14 @@
                     "english": {
                         "desc": "Update bot status.",
                         "expArgs": "<type(0/3)> <text..>",
-                        "reply": "Incorrect syntax. Insert a number."
+                        "error": "Incorrect syntax. Use: ",
+                        "reply": ""
                     },
                     "italian": {
                         "desc": "Aggiorna lo status del bot.",
                         "expArgs": "<tipo(0/3)> <testo..>",
-                        "reply": "Sintassi errata. Inserire un numero."
+                        "error": "Sintassi errata. Usa: ",
+                        "reply": ""
                     }
                 }
             }
