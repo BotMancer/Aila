@@ -6,6 +6,7 @@ module.exports = (client) => {
         await serverSettingsSchema({
             _id: guild.id,
             prefix: config.prefix,
+            language: config.language,
             features: {
                 autoban: {
                     state: config.features.autoban,

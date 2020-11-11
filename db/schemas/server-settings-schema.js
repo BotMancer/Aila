@@ -11,6 +11,15 @@ const serverSettingsSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    /* 
+    * Per-Server language.
+    * - English
+    * - Italian
+    */
+    language: {
+        type: String,
+        required: true
+    },
     //Per-Server features settings and states.
     features: {
         type: Object,

@@ -6,22 +6,24 @@ module.exports = {
     expectedArgs: '<new prefix>',
     minArgs: 1,
     maxArgs: 1,
-    callback: async (message, arguments, text, client) => {
+    callback: async (message, arguments, text, client, prefix, traslations) => {
         const guild = message.guild.id;
-        const prefix = arguments[0];
+        const newPrefix = arguments[0];
 
         await serverSettingsSchema.findByIdAndUpdate({
             _id: guild
         }, {
-            prefix
+            $set: {
+                "prefix": newPrefix
+            }
         }, {
             upsert: true
         });
 
-        message.reply(`The new server prefix is: \`${prefix}\``);
+        message.reply(traslations.reply + `\`${newPrefix}\``);
 
         //Update cache
-        commandBase.updateCache(guild, prefix);
+        commandBase.updateCache(guild, newPrefix);
     },
     permissions: 'ADMINISTRATOR',
     requiredRoles: [],

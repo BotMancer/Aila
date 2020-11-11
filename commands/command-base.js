@@ -2,6 +2,8 @@ const { prefix: globalPrefix } = require('@root/config.json');
 const serverSettingsSchema = require('@schemas/server-settings-schema');
 const guildPrefixes = {};
 
+const language = require('@i18n/i18n');
+
 const validatePermissions = (permissions) => {
     const validPermissions = [
         'ADMINISTRATOR',
@@ -42,7 +44,7 @@ const validatePermissions = (permissions) => {
         };
     };
 };
-module.exports = (client, commandOptions) => {
+module.exports = (client, commandOptions, commandPath) => {
     let {
         commands,
         expectedArgs = '',
@@ -77,14 +79,21 @@ module.exports = (client, commandOptions) => {
             const command = `${prefix}${alias.toLowerCase()}`;
 
             if (content.toLowerCase().startsWith(`${command} `) || content.toLowerCase() === command) {
-                //Check dei permessi dell'utente.
+                //Get traslated properties from DB.
+                const traslations = language(guild, commandPath[0], commandPath[1], commandPath[2]);
+
+                //ExpectedArgs
+                const expArgs = traslations.expArgs ?? expectedArgs;
+
+                //Check user permissions.
                 for (const permission of permissions) {
                     if (!member.hasPermission(permission)) {
                         message.reply(permissionError);
                         return
                     };
                 };
-                //Check dei ruoli dell'utente.
+
+                //Check user roles.
                 for (const requiredRole of requiredRoles) {
                     const role = guild.roles.cache.find((role) => role.name === requiredRole);
                     if (!role || !member.roles.cache.has(role.id)) {
@@ -92,19 +101,23 @@ module.exports = (client, commandOptions) => {
                         return
                     };
                 };
+
+                //Check syntax parameters.
                 const arguments = content.split(/[ ]+/);
                 arguments.shift();
-                //Check dei paramentri richiesti.
                 if (arguments.length < minArgs || (maxArgs !== null && arguments.length > maxArgs)) {
-                    message.reply(`sintassi del comando errata. Usa: \`${prefix}${alias} ${expectedArgs}\``);
+                    message.reply(`sintassi del comando errata. Usa: \`${prefix}${alias} ${expArgs}\``);
                     return
                 }
-                //Log dell'esecuzione del comando.
+
+                //Logging command execution.
                 console.log(`Running the command: ${alias} on ${guild.name}`);
+
                 //Reaction to command.
                 await message.react("🌺");
-                //Codice specifico del comando.
-                callback(message, arguments, arguments.join(' '), client, prefix);
+
+                //Command-related code.
+                callback(message, arguments, arguments.join(' '), client, prefix, traslations);
                 return
             }
         }

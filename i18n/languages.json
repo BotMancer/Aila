@@ -1,0 +1,254 @@
+{
+    "languages": [
+        "english",
+        "italian"
+    ],
+    "traslations": {
+        "commands": {
+            "misc": {
+                "botinfo": {
+                    "cmd": "botinfo",
+                    "english": {
+                        "desc": "Show info about the bot.",
+                        "expArgs": "",
+                        "reply": ""
+                    },
+                    "italian": {
+                        "desc": "Visualizza le informazioni relative al bot.",
+                        "expArgs": "",
+                        "reply": ""
+                    }
+                },
+                "serverinfo": {
+                    "cmd": "serverinfo",
+                    "english": {
+                        "desc": "Show info about the server.",
+                        "expArgs": "",
+                        "reply": ""
+                    },
+                    "italian": {
+                        "desc": "Visualizza le informazioni relative al server.",
+                        "expArgs": "",
+                        "reply": ""
+                    }
+                },
+                "userinfo": {
+                    "cmd": "botinfo",
+                    "english": {
+                        "desc": "Show info about an user.",
+                        "expArgs": "<@user>",
+                        "reply": ""
+                    },
+                    "italian": {
+                        "desc": "Visualizza le informazioni relative ad un utente.",
+                        "expArgs": "<@utente>",
+                        "reply": ""
+                    }
+                }
+            },
+            "moderation": {
+                "ban": {
+                    "cmd": "ban",
+                    "english": {
+                        "desc": "Ban an user from the server.",
+                        "expArgs": "<@user>",
+                        "reply": " has been banned from the server."
+                    },
+                    "italian": {
+                        "desc": "Banna un utente dal server.",
+                        "expArgs": "<@utente>",
+                        "reply": " è stato bannato dal server."
+                    }
+                },
+                "kick": {
+                    "cmd": "kick",
+                    "english": {
+                        "desc": "Kick an user from the server.",
+                        "expArgs": "<@user>",
+                        "reply": " has been kicked from the server."
+                    },
+                    "italian": {
+                        "desc": "Kicka un utente dal server.",
+                        "expArgs": "<@utente>",
+                        "reply": " è stato kickato dal server."
+                    }
+                },
+                "clear": {
+                    "cmd": "clear",
+                    "english": {
+                        "desc": "Delete a certain amount of messages.",
+                        "expArgs": "<amount>",
+                        "error": "Incorrect syntax. Insert a number.",
+                        "reply": ""
+                    },
+                    "italian": {
+                        "desc": "Cancella una quantità specifica di messaggi",
+                        "expArgs": "<quantità>",
+                        "error": "Sintassi errata. Inserire un numero.",
+                        "reply": ""
+                    }
+                },
+                "clearall": {
+                    "cmd": [
+                        "cc",
+                        "clearall"
+                    ],
+                    "english": {
+                        "desc": "Delete all messages in a channel (max: 14d).",
+                        "expArgs": "",
+                        "reply": ""
+                    },
+                    "italian": {
+                        "desc": "Cancella tutti i messaggi in un canale (max: 14gg).",
+                        "expArgs": "",
+                        "reply": ""
+                    }
+                }
+            },
+            "settings": {
+                "setautoban": {
+                    "cmd": "setautoban",
+                    "english": {
+                        "desc": "Enable/disable the Autoban feature.",
+                        "expArgs": "<state> <#channel>",
+                        "error": "state not supported.\nUse `enabled` to **enable** the feature.\nUse `disabled` to **disable** the feature.",
+                        "reply": "Autoban feature state: "
+                    },
+                    "italian": {
+                        "desc": "Attiva/disattiva la feature Autoban.",
+                        "expArgs": "<stato> <#canale>",
+                        "error": "stato non supportato.\nUsare `enabled` per **attivare** la feature.\nUsare `disabled` per **disabilitare la feature",
+                        "reply": "Stato della feature Autoban: "
+                    }
+                },
+                "setdisboard": {
+                    "cmd": "setdisboard",
+                    "english": {
+                        "desc": "Enable/disable the Disboard feature.",
+                        "expArgs": "<state> <#channel> <@role>",
+                        "error": "state not supported.\nUse `enabled` to **enable** the feature.\nUse `disabled` to **disable** the feature.",
+                        "reply": "Disboard feature state: "
+                    },
+                    "italian": {
+                        "desc": "Attiva/disattiva la feature Disboard.",
+                        "expArgs": "<stato> <#canale> <@ruolo>",
+                        "error": "stato non supportato.\nUsare `enabled` per **attivare** la feature.\nUsare `disabled` per **disabilitare la feature",
+                        "reply": "Stato della feature Disboard: "
+                    }
+                },
+                "setprefix": {
+                    "cmd": "setprefix",
+                    "english": {
+                        "desc": "Change the current server prefix.",
+                        "expArgs": "<new prefix>",
+                        "error": "",
+                        "reply": "The new server prefix is: "
+                    },
+                    "italian": {
+                        "desc": "Cambia il prefisso attuale del server.",
+                        "expArgs": "<nuovo prefisso>",
+                        "error": "",
+                        "reply": "Il nuovo prefisso del server è: "
+                    }
+                },
+                "setlanguage": {
+                    "cmd": [
+                        "setlang",
+                        "setlanguage"
+                    ],
+                    "english": {
+                        "desc": "Change the current server language.",
+                        "expArgs": "<new language>",
+                        "error": "Language not supported.",
+                        "reply": "The new server language is: "
+                    },
+                    "italian": {
+                        "desc": "Cambia la lingua attuale del server.",
+                        "expArgs": "<nuova lingua>",
+                        "error": "Lingua non supportata.",
+                        "reply": "La nuova lingua del server è: "
+                    }
+                }
+            },
+            "utility": {
+                "eval": {
+                    "cmd": "eval",
+                    "english": {
+                        "expArgs": "<command>",
+                        "reply": ""
+                    },
+                    "italian": {
+                        "expArgs": "<comando>",
+                        "reply": ""
+                    }
+                },
+                "servers": {
+                    "cmd": "servers",
+                    "english": {
+                        "desc": "Displays the servers where the bot is in.",
+                        "expArgs": "",
+                        "reply": ""
+                    },
+                    "italian": {
+                        "desc": "Visualizza i server dove è presente il bot.",
+                        "expArgs": "",
+                        "reply": ""
+                    }
+                },
+                "status": {
+                    "cmd": "status",
+                    "english": {
+                        "desc": "Update bot status.",
+                        "expArgs": "<type(0/3)> <text..>",
+                        "error": "Incorrect syntax. Use: ",
+                        "reply": ""
+                    },
+                    "italian": {
+                        "desc": "Aggiorna lo status del bot.",
+                        "expArgs": "<tipo(0/3)> <testo..>",
+                        "error": "Sintassi errata. Usa: ",
+                        "reply": ""
+                    }
+                }
+            }
+        },
+        "features": {
+            "autoban": {
+                "english": {
+                    "desc": "Autoban an user on join if account-age does not meet the required minimum days of registration.",
+                    "title": "User banned from ",
+                    "reason": "The account-age does not meet the required minimum days of registration. Aila."
+                },
+                "italian": {
+                    "desc": "Banna automaticamente un utente quanto joina se l'età dell'account non soddisfa i giorni minimi richiesti per la registrazione.",
+                    "title": "Utente bannato da ",
+                    "reason": "L'età dell'account non soddisfa i giorni minimi richiesti per la registrazione. Aila."
+                }
+            },
+            "disboard": {
+                "english": {
+                    "desc": "Automatically send a message when Disboard bump cooldown is off.",
+                    "reminder": {
+                        "title": "Disboard cooldown is off!",
+                        "message": "The cooldown to Bump the Server is over, type immediately `!d bump` to bump again!"
+                    },
+                    "reset": {
+                        "title": "Cooldown resetted!",
+                        "message": "Nice! The next appointment is in 2 hours, don't forget it!"
+                    }
+                },
+                "italian": {
+                    "desc": "Invia automaticamente un messaggio quando il cooldown per il bump di Disboard è terminato.",
+                    "reminder": {
+                        "title": "Il cooldown di Disboard è terminato!",
+                        "message": "Il cooldown per Bumpare il Server è terminato, digita subito `!d bump` per bumparlo nuovamente!"
+                    },
+                    "reset": {
+                        "title": "Cooldown resettato!",
+                        "message": "Complimenti! Il prossimo appuntamento è tra 2 ore, non dimenticarlo!"
+                    }
+                }
+            }
+        }
+    }
+}
