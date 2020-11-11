@@ -26,9 +26,10 @@
   "_moduleAliases": {
     "@root": ".",
     "@commands": "./commands",
-    "@features": "./features",
     "@events": "./events",
+    "@features": "./features",
     "@db": "./db",
-    "@schemas": "./db/schemas"
+    "@schemas": "./db/schemas",
+    "@i18n": "./i18n"
   }
 }

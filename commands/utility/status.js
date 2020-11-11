@@ -4,12 +4,10 @@ module.exports = {
     commands: 'status',
     expectedArgs: '<type(0/3)> <text..>',
     minArgs: 2,
-    callback: (message, arguments, text, client) => {
+    callback: (message, arguments, text, client, prefix, traslations) => {
         const type = +arguments[0];
         if (isNaN(type)) {
-            let alias = 'status';
-            let expectedArg = '<type(0/3)> <text..>';
-            message.reply(`sintassi del comando errata. Usa: \`${prefix}${alias} ${expectedArg}\``);
+            message.channel.send(traslations.error + `\`${prefix}status ${traslations.expArgs}\``);
         } else {
             const action = text.slice(2);
             client.user.setPresence({
