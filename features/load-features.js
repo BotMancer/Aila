@@ -6,6 +6,7 @@ const serverSettingsSchema = require('@schemas/server-settings-schema');
 
 module.exports = (client) => {
     const loadFile = 'load-features.js';
+
     const readFeatures = async (dir) => {
         const files = fs.readdirSync(path.join(__dirname, dir));
 
@@ -22,6 +23,8 @@ module.exports = (client) => {
 
                     const result = await serverSettingsSchema.findOne({ _id: guildID });
 
+                    const featurePath = path.join('features', dir, file).split('.')[0].replace('-', '').split('\\');
+
                     for (const featureProp in result.features) {
                         if (featureName === featureProp) {
                             const state = result.features[featureProp].state;
@@ -33,7 +36,7 @@ module.exports = (client) => {
                             }
                         }
                     }
-                    feature(client, guild[1]);
+                    feature(client, guild[1], featurePath);
                 }
             }
         }

@@ -2,6 +2,8 @@ const { MessageEmbed } = require('discord.js');
 const { color } = require('@root/config.json');
 const serverSettingsSchema = require('@schemas/server-settings-schema');
 
+const language = require('@i18n/i18n');
+
 function DiffDays(creationDate, todayDate) {
     var timeDiff = todayDate - creationDate;
     return Math.floor(timeDiff / (1000 * 60 * 60 * 24));
@@ -13,9 +15,12 @@ const checkState = async (guildID) => {
     return { state, log_channel };
 }
 
-module.exports = (client, guild) => {
+module.exports = (client, guild, featurePath) => {
     client.on('guildMemberAdd', async (member) => {
         if (guild == member.guild) {
+            //Get traslated properties from DB.
+            const traslations = language(guild, featurePath[0], featurePath[1], featurePath[2]);
+
             //Getting state from DB.
             const { state, log_channel } = await checkState(member.guild.id);
 
@@ -27,13 +32,13 @@ module.exports = (client, guild) => {
                 const memberAge = DiffDays(Date.parse(memberCreationDate), Date.parse(todayDate));
 
                 if (memberAge <= 3) {
-                    console.log(`Attivazione misure di sicurezza sull'account ${member.user.username} - ${member.id}`);
+                    console.log(`Activating security measures on ${member.user.username} - ${member.id}`);
                     member.ban({
-                        reason: "L'account non rispetta i 3 giorni di registrazione minimi richiesti. Aila."
+                        reason: traslations.reason
                     }).then(() => {
                         if (log_channel != null || log_channel != undefined) {
                             const embed = new MessageEmbed()
-                                .setAuthor(`User banned from ${client.user.username}`, client.user.displayAvatarURL())
+                                .setAuthor(traslations.title + client.user.username, client.user.displayAvatarURL())
                                 .setFooter(`Sent ${new Date(message.createdTimestamp).toLocaleDateString()} at ${new Date(message.createdTimestamp).toLocaleTimeString()}`)
                                 .setColor(color)
                                 .addFields(
