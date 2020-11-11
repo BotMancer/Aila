@@ -9,7 +9,7 @@ module.exports = {
         const targetMember = message.guild.member(targetUser);
 
         targetMember.ban().then(() => {
-            message.channel.send(`${targetMember} ` + traslations.reply);
+            message.channel.send(`${targetMember}` + traslations.reply);
         });
     },
     permissions: ['ADMINISTRATOR', 'BAN_MEMBERS'],

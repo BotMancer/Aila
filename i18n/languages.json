@@ -52,12 +52,12 @@
                     "english": {
                         "desc": "Ban an user from the server.",
                         "expArgs": "<@user>",
-                        "reply": "has been banned from the server."
+                        "reply": " has been banned from the server."
                     },
                     "italian": {
                         "desc": "Banna un utente dal server.",
                         "expArgs": "<@utente>",
-                        "reply": "è stato bannato dal server."
+                        "reply": " è stato bannato dal server."
                     }
                 },
                 "kick": {
@@ -65,12 +65,12 @@
                     "english": {
                         "desc": "Kick an user from the server.",
                         "expArgs": "<@user>",
-                        "reply": "has been kicked from the server."
+                        "reply": " has been kicked from the server."
                     },
                     "italian": {
                         "desc": "Kicka un utente dal server.",
                         "expArgs": "<@utente>",
-                        "reply": "è stato kickato dal server."
+                        "reply": " è stato kickato dal server."
                     }
                 },
                 "clear": {
@@ -159,13 +159,13 @@
                     "english": {
                         "desc": "Change the current server language.",
                         "expArgs": "<new language>",
-                        "error": "",
+                        "error": "Language not supported.",
                         "reply": "The new server language is: "
                     },
                     "italian": {
                         "desc": "Cambia la lingua attuale del server.",
                         "expArgs": "<nuova lingua>",
-                        "error": "",
+                        "error": "Lingua non supportata.",
                         "reply": "Il nuovo prefisso del server è: "
                     }
                 }

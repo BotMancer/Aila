@@ -7,13 +7,13 @@ module.exports = {
     expectedArgs: '<language>',
     minArgs: 1,
     maxArgs: 1,
-    callback: async (message, arguments, text, client) => {
+    callback: async (message, arguments, text, client, prefix, traslations) => {
         const { guild } = message;
 
         const newLanguage = arguments[0].toLowerCase();
 
         if (!languages.includes(newLanguage)) {
-            message.reply('Language not supported.');
+            message.reply(traslations.error);
             return
         }
 
@@ -29,7 +29,7 @@ module.exports = {
             upsert: true
         })
 
-        message.reply(`The new server language is: \`${newLanguage}\``);
+        message.reply(traslations.reply + `\`${newLanguage}\``);
     },
     permissions: 'ADMINISTRATOR',
     requiredRoles: [],

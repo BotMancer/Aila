@@ -6,7 +6,7 @@ module.exports = {
     expectedArgs: '<new prefix>',
     minArgs: 1,
     maxArgs: 1,
-    callback: async (message, arguments, text, client) => {
+    callback: async (message, arguments, text, client, prefix, traslations) => {
         const guild = message.guild.id;
         const prefix = arguments[0];
 
@@ -20,7 +20,7 @@ module.exports = {
             upsert: true
         });
 
-        message.reply(`The new server prefix is: \`${prefix}\``);
+        message.reply(traslations.reply + `\`${prefix}\``);
 
         //Update cache
         commandBase.updateCache(guild, prefix);

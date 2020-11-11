@@ -5,12 +5,12 @@ module.exports = {
     expectedArgs: '<state> <channel> <role>',
     minArgs: 1,
     maxArgs: 3,
-    callback: async (message, arguments, text, client) => {
+    callback: async (message, arguments, text, client, prefix, traslations) => {
         const userState = arguments[0];
         const guild = message.guild.id;
         //validate user input for state
         if (userState != 'enabled' && userState != 'disabled') {
-            message.channel.send(`\`${userState}\` state not supported.\nUse \`enabled\` to **enable** the feature.\nUse \`disabled\` to **disable** the feature.`);
+            message.channel.send(`\`${userState}\` ` + traslations.error);
             return;
         }
         const state = () => {
@@ -44,7 +44,7 @@ module.exports = {
 
         console.log(`Reloading feature: disboard on ${message.guild.name}`);
 
-        message.channel.send(`Disboard feature state: \`${userState}\``);
+        message.channel.send(traslations.reply + `\`${userState}\``);
     },
     permissions: 'ADMINISTRATOR',
     requiredRoles: [],
