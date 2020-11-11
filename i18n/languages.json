@@ -78,12 +78,14 @@
                     "english": {
                         "desc": "Delete a certain amount of messages.",
                         "expArgs": "<amount>",
-                        "reply": "Incorrect syntax. Insert a number."
+                        "error": "Incorrect syntax. Insert a number.",
+                        "reply": ""
                     },
                     "italian": {
                         "desc": "Cancella una quantità specifica di messaggi",
                         "expArgs": "<quantità>",
-                        "reply": "Sintassi errata. Inserire un numero."
+                        "error": "Sintassi errata. Inserire un numero.",
+                        "reply": ""
                     }
                 },
                 "clearall": {

@@ -117,7 +117,7 @@ module.exports = (client, commandOptions, commandPath) => {
                 await message.react("🌺");
 
                 //Command-related code.
-                callback(message, arguments, arguments.join(' '), client, prefix);
+                callback(message, arguments, arguments.join(' '), client, prefix, traslations);
                 return
             }
         }

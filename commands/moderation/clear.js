@@ -3,10 +3,10 @@ module.exports = {
     expectedArgs: '<amount>',
     minArgs: 1,
     maxArgs: 1,
-    callback: (message, arguments, text, client) => {
+    callback: (message, arguments, text, client, prefix, traslations) => {
         const amount = parseInt(arguments);
         if (isNaN(amount)) {
-            message.reply(`Incorrect syntax. Insert a number.`);
+            message.reply(traslations.error);
         } else {
             message.delete();
             message.channel.messages.fetch().then(() => {
