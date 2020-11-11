@@ -1,27 +1,26 @@
 {
   "name": "Aila-bot",
   "version": "1.0.0",
-  "description": "Aila-bot",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "A Bot for Discord",
+  "author": "Luca Biagetti",
+  "homepage": "https://github.com/islaDevs/Aila-bot#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/islaDevs/Aila-bot.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/islaDevs/Aila-bot/issues"
   },
-  "homepage": "https://github.com/islaDevs/Aila-bot#readme",
   "dependencies": {
     "discord.js": "^12.4.1",
     "dotenv": "^8.2.0",
     "module-alias": "^2.2.2",
     "mongoose": "^5.10.11"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js"
   },
   "_moduleAliases": {
     "@root": ".",
