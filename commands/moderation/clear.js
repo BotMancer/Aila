@@ -4,7 +4,10 @@ module.exports = {
     minArgs: 1,
     maxArgs: 1,
     callback: (message, arguments, text, client, prefix, traslations) => {
-        const amount = parseInt(arguments);
+        message.delete(); //Delete the invocation message.
+
+        const amount = parseInt(arguments); //Amout of messages to delete.
+
         if (isNaN(amount)) {
             message.reply(traslations.error);
         } else {
