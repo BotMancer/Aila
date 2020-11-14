@@ -19,13 +19,20 @@ client.on('ready', async () => {
     client.setMaxListeners(0);
     console.log('Aila is ready!');
 
+    //MongoDB permanend connection.
     await mongo().then(() => { console.log('Aila is connected to MongoDB database!') });
+    //Load per-server selected languages.
     loadLanguages(client);
+    //Load events listeners.
     loadEvents(client);
+    //Load per-server selected prefix.
     commandBase.loadPrefixes(client);
+    //Load commands.
     loadCommands(client);
+    //Load per-server activated features.
     loadFeatures(client);
 
+    //Set bot presence.
     client.user.setPresence({
         activity: {
             name: `${config.prefix}help | comandi.`,

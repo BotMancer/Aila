@@ -8,17 +8,19 @@ module.exports = {
     minArgs: 1,
     maxArgs: 1,
     callback: async (message, arguments, text, client, prefix, traslations) => {
-        const { guild } = message;
+        const newLanguage = arguments[0].toLowerCase(); //User input for language.
+        const { guild } = message; //Current Guild object.
 
-        const newLanguage = arguments[0].toLowerCase();
-
+        //validate user input for language.
         if (!languages.includes(newLanguage)) {
             message.reply(traslations.error);
             return
         }
 
+        //Update bot cache.
         setLanguage(guild, newLanguage);
 
+        //Updating DB document.
         await serverSettingsSchema.findByIdAndUpdate({
             _id: guild.id
         }, {

@@ -7,9 +7,10 @@ module.exports = {
     minArgs: 1,
     maxArgs: 1,
     callback: async (message, arguments, text, client, prefix, traslations) => {
-        const guild = message.guild.id;
-        const newPrefix = arguments[0];
+        const newPrefix = arguments[0]; //User input for prefix.
+        const guild = message.guild.id; //Current guild.
 
+        //Updating DB document.
         await serverSettingsSchema.findByIdAndUpdate({
             _id: guild
         }, {
@@ -22,7 +23,7 @@ module.exports = {
 
         message.reply(traslations.reply + `\`${newPrefix}\``);
 
-        //Update cache
+        //Update bot cache.
         commandBase.updateCache(guild, newPrefix);
     },
     permissions: 'ADMINISTRATOR',
