@@ -5,7 +5,8 @@ module.exports = {
     expectedArgs: '<type(0/3)> <text..>',
     minArgs: 2,
     callback: (message, arguments, text, client, prefix, traslations) => {
-        const type = +arguments[0];
+        const type = +arguments[0]; //User input for type of action performed.
+
         if (isNaN(type)) {
             message.channel.send(traslations.error + `\`${prefix}status ${traslations.expArgs}\``);
         } else {
