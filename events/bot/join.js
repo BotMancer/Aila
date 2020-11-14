@@ -3,6 +3,7 @@ const config = require('@root/config.json');
 
 module.exports = (client) => {
     client.on('guildCreate', async (guild) => {
+        //Creating DB document with default options.
         await serverSettingsSchema({
             _id: guild.id,
             prefix: config.prefix,
