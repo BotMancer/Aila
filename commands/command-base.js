@@ -83,7 +83,7 @@ module.exports = (client, commandOptions, commandPath) => {
                 const traslations = language(guild, commandPath[0], commandPath[1], commandPath[2]);
 
                 //ExpectedArgs
-                const expArgs = traslations.expArgs ?? expectedArgs;
+                const expArgs = traslations.expArgs || expectedArgs;
 
                 //Check user permissions.
                 for (const permission of permissions) {
