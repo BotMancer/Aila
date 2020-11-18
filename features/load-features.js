@@ -23,7 +23,8 @@ module.exports = (client) => {
 
                     const result = await serverSettingsSchema.findOne({ _id: guildID });
 
-                    const featurePath = path.join('features', dir, file).split('.')[0].replace('-', '').split('\\');
+                    const pathDivider = process.platform === "linux" ? '/' : '\\';
+                    const featurePath = path.join('features', dir, file).split('.')[0].replace('-', '').split(pathDivider);
 
                     for (const featureProp in result.features) {
                         if (featureName === featureProp) {

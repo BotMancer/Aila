@@ -18,7 +18,8 @@ module.exports = (client) => {
                 readCommands(path.join(dir, file));
             } else if (file !== baseFile && file !== loadFile) {
                 const option = require(path.join(__dirname, dir, file));
-                const commandPath = path.join('commands', dir, file).split('.')[0].replace('-', '').split('\\');
+                const pathDivider = process.platform === "linux" ? '/' : '\\';
+                const commandPath = path.join('commands', dir, file).split('.')[0].replace('-', '').split(pathDivider);
 
                 commands.push(option);
 
