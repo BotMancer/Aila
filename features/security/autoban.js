@@ -39,7 +39,6 @@ module.exports = (client, guild, featurePath) => {
                         if (log_channel != null || log_channel != undefined) {
                             const embed = new MessageEmbed()
                                 .setAuthor(traslations.title + client.user.username, client.user.displayAvatarURL())
-                                .setFooter(`Sent ${new Date(message.createdTimestamp).toLocaleDateString()} at ${new Date(message.createdTimestamp).toLocaleTimeString()}`)
                                 .setColor(color)
                                 .addFields(
                                     { name: 'Target', value: `<@${member.id}>` },
