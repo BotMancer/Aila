@@ -3,7 +3,7 @@
         <img src=https://i.imgur.com/W8BPPlS.png width=300>
     </a>
     <br>
-    AILA PROJECT
+    AILA
     <br>
 </h1>
 
